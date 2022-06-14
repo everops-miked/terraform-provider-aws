@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
 )
 
-func findQuerySuggestionsBlockListByID(ctx context.Context, conn *kendra.Client, id, indexId string) (*kendra.DescribeQuerySuggestionsBlockListOutput, error) {
+func FindQuerySuggestionsBlockListByID(ctx context.Context, conn *kendra.Client, id, indexId string) (*kendra.DescribeQuerySuggestionsBlockListOutput, error) {
 	in := &kendra.DescribeQuerySuggestionsBlockListInput{
 		Id:      aws.String(id),
 		IndexId: aws.String(indexId),

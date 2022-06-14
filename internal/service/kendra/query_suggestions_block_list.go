@@ -49,6 +49,7 @@ func ResourceQuerySuggestionsBlockList() *schema.Resource {
 			"index_id": {
 				Type:     schema.TypeString,
 				Required: true,
+				ForceNew: true,
 			},
 			"name": {
 				Type:     schema.TypeString,
@@ -136,7 +137,7 @@ func resourceQuerySuggestionsBlockListRead(ctx context.Context, d *schema.Resour
 		return diag.FromErr(err)
 	}
 
-	out, err := findQuerySuggestionsBlockListByID(ctx, conn, id, indexId)
+	out, err := FindQuerySuggestionsBlockListByID(ctx, conn, id, indexId)
 
 	if !d.IsNewResource() && tfresource.NotFound(err) {
 		log.Printf("[WARN] Kendra QuerySuggestionsBlockList (%s) not found, removing from state", d.Id())
